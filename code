@@ -1,0 +1,67 @@
+##liquid-code
+##under <div class="selector-wrapper js product-form__item">
+
+<!----custom code ---->
+                    
+{%if option.name == "Color"%}
+    <label>{{option.name}}</label>
+      {%assign index = forloop.index %}
+      <div class="variant-swatches">
+        {%for value in option.values%}
+          <input class="single-option-selector-{{ section.id }}" id="color-{{forloop.index}}" type="radio" name="color"  value="{{ value | escape }}" data-index="option{{index}}"/>
+          <label for="color-{{forloop.index}}">
+            {{value}}
+          </label>
+        {%endfor%}
+    </div>
+  {%else%} 
+{%endif%}      
+                           
+                  
+{%if option.name == "Size"%}
+    <label>{{option.name}}</label>
+      {%assign index = forloop.index %}
+        <div class="variant-swatches">
+          {%for value in option.values%}
+            <input class="single-option-selector-{{ section.id }}" id="size-{{forloop.index}}" type="radio" name="size"  value="{{ value | escape }}" data-index="option{{index}}"/>
+            <label for="size-{{forloop.index}}">
+              {{value}}
+            </label>
+         {%endfor%}
+        </div>
+   {%else%} 
+{%endif%}                
+ <!----custom code end ---->   
+
+
+##css 
+ .variant-swatches{
+      display: flex;
+  }
+  .variant-swatches input{
+  display:none;
+  	}
+  .variant-swatches label{}
+  .variant-swatches label img{
+  width: 40px;
+    height: 40px;
+  }
+.variant-swatches label {
+    margin-right: 9px;
+    padding: 5px 10px;
+    border: 1px solid blue;
+    transition: 0.2s;
+}
+
+.variant-swatches label:hover {
+    background: blue !important;
+    color: #fff !important;
+}
+.variant-swatches {
+    display: inline-block !important; 
+}
+.variant-swatches label {
+    display: inline-block !important;
+    margin-bottom: 7px !important;
+}
+
